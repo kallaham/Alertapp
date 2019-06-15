@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+//opcional
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +10,17 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.transicionALogin();
+  }
+
+  // hace una transición a la página login despues de 5 segundos
+  transicionALogin() {
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 5000);
+  }
 
 }
