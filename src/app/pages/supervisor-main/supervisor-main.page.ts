@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FDBServiceService} from '../../services/fdbservice.service';
 
 @Component({
   selector: 'app-supervisor-main',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupervisorMainPage implements OnInit {
 
-  constructor() { }
-
+  constructor(public fireDB: FDBServiceService) { }
+  
   ngOnInit() {
   }
 
