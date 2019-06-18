@@ -20,7 +20,7 @@ export class HomePage {
   transicionALogin() {
     setTimeout(() => {
       this.router.navigate(['/login']);
-    }, 5000);
+    }, 7000);
   }
 
 }
