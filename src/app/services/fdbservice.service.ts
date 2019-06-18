@@ -10,74 +10,49 @@ import { ToastController } from '@ionic/angular';
 })
 export class FDBServiceService {
 
+  operariosDisponibles: any [] = [];
+  ubicaciones:any[]=[];
+  //db:any=firebase.firestore;
+
   // Your web app's Firebase configuration
   firebaseConfig = {
-    apiKey: "AIzaSyCSN_I7bMUi_bvS93uxzScWnkHrZMstcJs",
-    authDomain: "proyectoionic-d4bf6.firebaseapp.com",
-    databaseURL: "https://proyectoionic-d4bf6.firebaseio.com",
-    projectId: "proyectoionic-d4bf6",
-    storageBucket: "proyectoionic-d4bf6.appspot.com",
-    messagingSenderId: "983719252761",
-    appId: "1:983719252761:web:2b3268c3004f7d16"
+    apiKey: "AIzaSyCNQvdmkMMGyXJ9pDf1dNFbub0SOzuMmgc",
+    authDomain: "pruebafirestore-67d01.firebaseapp.com",
+    databaseURL: "https://pruebafirestore-67d01.firebaseio.com",
+    projectId: "pruebafirestore-67d01",
+    storageBucket: "pruebafirestore-67d01.appspot.com",
+    messagingSenderId: "738349578431",
+    appId: "1:738349578431:web:3b194990ca10067e"
   };
-
-  uid: string;
-  rol: string;
-  trabajador: any[] = [];
-  correo;
 
   constructor(public router: Router, public toastController: ToastController) {
     firebase.initializeApp(this.firebaseConfig);
+   // console.log("todo bien")
+ //this.traerListaOperarios()
+ this.traerUbicaciones()
   }
 
-  iniciarSesion(correo, clave) {
-    this.correo = correo;
-    firebase.auth().signInWithEmailAndPassword(correo, clave)
-      .then(respuesta => {
-        // console.log(respuesta);
-        this.uid = respuesta.user.uid;
-        // console.log('UID: ', this.uid);
-        this.correo = correo;
-        this.validacionRol();
-      }).catch(error => {
-        console.log(error);
-        //this.presentToast(error.message);
+  traerListaOperarios(){
+  firebase.firestore().collection("operarios").get()
+     .then(snapshot=>{
+       snapshot.forEach(dato=>{
+         console.log(dato);
+         if(dato.data().disponible){
+          this.operariosDisponibles.push(dato.data());
+         }
       });
+       console.log(this.operariosDisponibles);
+     })
+     .catch(err=>console.log(err))
   }
 
-  //valida el rol supervisor o empleado
-  validacionRol(): void {
-    firebase.database().ref('/trabajadores').orderByKey().equalTo(this.uid).once('value')
-      .then((snap) => {
-        // console.log(snap.val());
-        snap.forEach(element => {
-          this.trabajador = element.val();
-         /*  console.log(element);
-          console.log('h'); */
-        });
-      // console.log(snap.val())
-      // console.log(this.trabajador);
-        this.rol = this.trabajador['rol'];
-
-        if (this.rol === 'supervisor') {
-          this.router.navigate(['/supervisor-main']);
-       } else {
-          this.router.navigate(['/operario-main']);
-        }
-        this.presentToast(`Bienvenido ${this.correo}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-
-  async presentToast(texto: string) {
-    const toast = await this.toastController.create({
-      message: texto,
-      duration: 5000
-    });
-    toast.present();
-  }
+traerUbicaciones(){
+  firebase.firestore().collection("lugares").get()
+  .then(snapshot=>{
+     snapshot.forEach(lugar=>this.ubicaciones.push(lugar.data().lugar_1.nombre));
+     console.log(this.ubicaciones)
+  })
+  .catch(err=>console.log(err));
+}
 
 }

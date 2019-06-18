@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FDBServiceService} from '../../services/fdbservice.service';
 
 @Component({
   selector: 'app-supervisor-tasks',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupervisorTasksPage implements OnInit {
 
-  constructor() { }
+  constructor(public dbFireStore: FDBServiceService) { }
 
   ngOnInit() {
   }
