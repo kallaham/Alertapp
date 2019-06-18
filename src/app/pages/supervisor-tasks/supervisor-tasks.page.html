@@ -7,7 +7,7 @@
 <ion-content>
 
     <ion-item>
-        <ion-label>Trabajadores</ion-label>
+        <ion-label>Trabajadores Disponibles</ion-label>
         <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
             <ion-select-option value="">Pendiente</ion-select-option>
             <ion-select-option value="">Pendiente</ion-select-option>
@@ -18,7 +18,7 @@
     </ion-item>
 
     <ion-item>
-        <ion-label>Tareas</ion-label>
+        <ion-label>Asignar Tarea</ion-label>
         <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
             <ion-select-option value="">Pendiente</ion-select-option>
             <ion-select-option value="">Pendiente</ion-select-option>
@@ -29,7 +29,7 @@
     </ion-item>
 
     <ion-item>
-        <ion-label>Lugar de Trabajo</ion-label>
+        <ion-label>Selec. Lugar de Trabajo</ion-label>
         <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
             <ion-select-option value="">Pendiente</ion-select-option>
             <ion-select-option value="">Pendiente</ion-select-option>
@@ -37,11 +37,19 @@
             <ion-select-option value="">Pendiente</ion-select-option>
             <ion-select-option value="">Pendiente</ion-select-option>
         </ion-select>
+    </ion-item>
+
+    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <ion-textarea></ion-textarea>
+
+    <!-- Textarea in an item with a placeholder -->
+    <ion-item>
+        <ion-textarea placeholder="Observaciones generales..."></ion-textarea>
     </ion-item>
 
     <ion-button shape="round" expand="block">Asignar</ion-button>
-    <ion-button shape="round" expand="block">Nueva Tarea</ion-button>
-    <ion-button shape="round" expand="block">Consultar Tareas</ion-button>
-    <ion-button shape="round" expand="block">Seguimientos</ion-button>
+    <!--<ion-button shape="round" expand="block">Nueva Tarea</ion-button>-->
+    <ion-button shape="round" expand="block">Volver</ion-button>
+    <!--<ion-button shape="round" expand="block">Seguimientos</ion-button>-->
 
 </ion-content>
