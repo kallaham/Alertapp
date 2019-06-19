@@ -8,9 +8,9 @@
 
     <ion-item>
         <ion-label>Trabajadores Disponibles</ion-label>
-        <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
-            <ion-select-option  *ngFor="let operario of dbFireStore.operariosDisponibles" value="">{{operario.nombre}}</ion-select-option>
-        </ion-select>
+        <ion-select [(ngModel)]="operarioSeleccionado" id="selectOperario" interface="action-sheet" placeholder="Seleccionar" >
+                    <ion-select-option [value]="operario" *ngFor="let operario of dbFireStore.operariosDisponibles">{{operario.nombre}}</ion-select-option>
+            </ion-select>
     </ion-item>
 
     <ion-item>
@@ -27,7 +27,7 @@
     <ion-item>
         <ion-label>Selec. Lugar de Trabajo</ion-label>
         <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
-            <ion-select-option  *ngFor="let lugar of dbFireStore.ubicaciones" value="">{{lugar}}</ion-select-option>
+            <ion-select-option  *ngFor="let lugar of dbFireStore.ubicaciones" value="">{{lugar.nombre}}</ion-select-option>
         </ion-select>
     </ion-item>
 
@@ -39,7 +39,7 @@
         <ion-textarea placeholder="Observaciones generales..."></ion-textarea>
     </ion-item>
 
-    <ion-button shape="round" expand="block">Asignar</ion-button>
+    <ion-button shape="round" expand="block" (click)="asignarTarea()">Asignar</ion-button>
     <!--<ion-button shape="round" expand="block">Nueva Tarea</ion-button>-->
     <ion-button shape="round" expand="block">Volver</ion-button>
     <!--<ion-button shape="round" expand="block">Seguimientos</ion-button>-->
