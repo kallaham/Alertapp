@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
 
 //inicio sesion
 iniciarSesion(correo: string, clave: string){
-  this.fireDb.getBaseDatos().auth().signInWithEmailAndPassword(correo, clave)
+  this.fireDb.getFireBase().auth().signInWithEmailAndPassword(correo, clave)
   .then(respuesta => {
     this.validarRol(respuesta.user.uid);
   })
@@ -35,15 +35,12 @@ validarRol(uid) {
   this.fireDb.getFireStore().collection("supervisores").get()
   .then(snapshot => {
     snapshot.forEach(dato => {
-       if(uid === dato.id) { 
+       if (uid === dato.id) { 
           this.esSupervisor = true;
         }
        });
-      if(this.esSupervisor) {
-        this.router.navigate(['/supervisor-main']);
-      } else {
-        this.router.navigate(['/operario-main']);
-      }
+      if(this.esSupervisor){this.router.navigate(['/supervisor-main']);} 
+      else {this.router.navigate(['/operario-main']);}
   })
   .catch(err=>console.log(err));
 }

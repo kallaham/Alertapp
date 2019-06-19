@@ -15,19 +15,15 @@
 
     <ion-item>
         <ion-label>Asignar Tarea</ion-label>
-        <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
-            <ion-select-option value="">Pendiente</ion-select-option>
-            <ion-select-option value="">Pendiente</ion-select-option>
-            <ion-select-option value="">Pendiente</ion-select-option>
-            <ion-select-option value="">Pendiente</ion-select-option>
-            <ion-select-option value="">Pendiente</ion-select-option>
+        <ion-select [(ngModel)]="tareaSeleccionada" id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
+            <ion-select-option [value]="tarea"  *ngFor="let tarea of dbFireStore.tareas">{{tarea.tarea}}</ion-select-option>
         </ion-select>
     </ion-item>
 
     <ion-item>
         <ion-label>Selec. Lugar de Trabajo</ion-label>
-        <ion-select id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
-            <ion-select-option  *ngFor="let lugar of dbFireStore.ubicaciones" value="">{{lugar.nombre}}</ion-select-option>
+        <ion-select [(ngModel)]="lugarSeleccionado" id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
+            <ion-select-option [value]="lugar" *ngFor="let lugar of dbFireStore.ubicaciones">{{lugar.nombre}}</ion-select-option>
         </ion-select>
     </ion-item>
 
@@ -36,12 +32,12 @@
 
     <!-- Textarea in an item with a placeholder -->
     <ion-item>
-        <ion-textarea placeholder="Observaciones generales..."></ion-textarea>
+        <ion-textarea [(ngModel)]="descripcion" placeholder="Observaciones generales..."></ion-textarea>
     </ion-item>
 
     <ion-button shape="round" expand="block" (click)="asignarTarea()">Asignar</ion-button>
     <!--<ion-button shape="round" expand="block">Nueva Tarea</ion-button>-->
-    <ion-button shape="round" expand="block">Volver</ion-button>
+    <ion-button shape="round" expand="block" (click)="irAMain()">Volver</ion-button>
     <!--<ion-button shape="round" expand="block">Seguimientos</ion-button>-->
 
 </ion-content>
