@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'supervisor-main', loadChildren: './pages/supervisor-main/supervisor-main.module#SupervisorMainPageModule' },
   { path: 'operario-main', loadChildren: './pages/operario-main/operario-main.module#OperarioMainPageModule' },  { path: 'supervisor-tasks', loadChildren: './pages/supervisor-tasks/supervisor-tasks.module#SupervisorTasksPageModule' },
+  { path: 'supervisor-geotasks', loadChildren: './pages/supervisor-geotasks/supervisor-geotasks.module#SupervisorGeotasksPageModule' },
 
 ];
 
