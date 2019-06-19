@@ -1,4 +1,34 @@
-ion-card {
+.titulo{
     background-color: yellow;
+    font-family: 'Belgrado';
+    font-size: 35px;
+    text-align: center;
+    color: black;
 }
 
+ion-content {
+    --background: black !important;
+}
+
+.cuerpo{
+    $background-color: green;
+    margin-top: 150px;
+}
+
+ion-button{
+    --color: black;
+    --background: yellow;
+    font-weight: bold;
+}
+
+ion-label{
+   --color: yellow !important;
+}
+
+ion-input{
+    --color: yellow !important;
+ }
+
+ion-item{
+    --background: black;
+}
