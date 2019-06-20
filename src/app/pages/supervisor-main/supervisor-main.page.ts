@@ -8,13 +8,42 @@ import { Router } from '@angular/router';
 })
 export class SupervisorMainPage implements OnInit {
 
-  constructor(public fireDB: FDBServiceService,public router: Router) { }
-  
+  asigna:any;
+  asignaciones:any[]=[];
+  mostrarAsignaciones=false;
+
+  constructor(public fireDB: FDBServiceService,public router: Router) {
+    
+   }
+
   ngOnInit() {
+    this.traerAsignaciones()
   }
+
+  traerAsignaciones(){
+     this.fireDB.getFireStore().collection("asignaciones").get()
+     .then(snapshot=>{
+       snapshot.forEach(dato=>{
+       // console.log(dato.data())
+        this.asignaciones.push(dato.data());
+       });
+       console.log(this.asignaciones)
+     })
+     .catch();
+  }
+
+
 
   irATareas(){
     this.router.navigate(['/supervisor-tasks']);
+  }
+
+  muestraAsignaciones(){
+    this.mostrarAsignaciones=true;
+  }
+
+  asig(){
+console.log(this.asigna)
   }
 
 }
