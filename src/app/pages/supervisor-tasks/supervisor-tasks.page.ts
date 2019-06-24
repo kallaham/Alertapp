@@ -51,7 +51,7 @@ export class SupervisorTasksPage implements OnInit {
       return;
     }
     this.cambioDeDisponibilidadOperario();
-    this.dbFireStore.getFireStore().collection("asignaciones").add({
+    this.dbFireStore.getFireStore().collection('asignaciones').add({
         nombre_operario:`${this.operarioSeleccionado.nombre} ${this.operarioSeleccionado.apellido}`,
         uid_operario:this.operarioSeleccionado.uid,
         uid_supervisor:usuarioActual.uid,
@@ -73,11 +73,20 @@ export class SupervisorTasksPage implements OnInit {
       uid_lugar:this.lugarSeleccionado.uid,
       hora_asignacion:this.dbFireStore.getFireBase().firestore.FieldValue.serverTimestamp(),
       tarea: this.tareaSeleccionada.tarea,
+      id: docRef.id,
       uid_tarea:this.tareaSeleccionada.uid,
       descripcion_tarea: this.descripcion,
-      activa:true}
+      activa:true};
       this.presentToast("Asignación exitosa");
       this.router.navigate(['/supervisor-main']);
+
+      return docRef.id;
+    })
+    .then(uid=>{
+       this.dbFireStore.getFireStore().collection("asignaciones")
+       .doc(uid).update({
+         id: uid,
+       });
     })
     .catch(err=>console.error(err));
   }

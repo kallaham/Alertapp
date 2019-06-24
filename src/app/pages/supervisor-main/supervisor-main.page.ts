@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FDBServiceService} from '../../services/fdbservice.service';
 import { Router } from '@angular/router';
+import { PopoverController, NavParams } from '@ionic/angular';
+import { PopoverPage } from '../popover/popover.page';
 @Component({
   selector: 'app-supervisor-main',
   templateUrl: './supervisor-main.page.html',
@@ -12,7 +14,8 @@ export class SupervisorMainPage implements OnInit {
   asignaciones:any[]=[];
   mostrarAsignaciones=false;
 
-  constructor(public fireDB: FDBServiceService,public router: Router) {
+  constructor(public fireDB: FDBServiceService,public router: Router,
+    private popover: PopoverController) {
     
    }
 
@@ -21,15 +24,22 @@ export class SupervisorMainPage implements OnInit {
   }
 
   traerAsignaciones(){
-     this.fireDB.getFireStore().collection("asignaciones").get()
+     this.fireDB.getFireStore().collection('asignaciones').onSnapshot(querySnapshot=>{
+       this.asignaciones = [];
+       querySnapshot.forEach(asignacion=>{
+         this.asignaciones.push(asignacion.data());
+       });
+       console.log(this.asignaciones);
+     });
+    /*  .get()
      .then(snapshot=>{
        snapshot.forEach(dato=>{
        // console.log(dato.data())
         this.asignaciones.push(dato.data());
        });
        console.log(this.asignaciones)
-     })
-     .catch();
+     }) */
+    /*  .catch(); */
   }
 
 
@@ -44,6 +54,18 @@ export class SupervisorMainPage implements OnInit {
 
   asig(){
 console.log(this.asigna)
+  }
+
+  async verDetalle(ev: Event, asignacion){
+    const popover= await this.popover.create({
+      component : PopoverPage,
+      componentProps:{
+        lugar:asignacion.lugar,
+        operario:asignacion.nombre_operario
+      },
+      event: ev
+    });
+    popover.present();
   }
 
 }

@@ -9,6 +9,9 @@ const routes: Routes = [
   { path: 'operario-main', loadChildren: './pages/operario-main/operario-main.module#OperarioMainPageModule' },
   { path: 'supervisor-tasks', loadChildren: './pages/supervisor-tasks/supervisor-tasks.module#SupervisorTasksPageModule' },
   { path: 'supervisor-geotasks/:id', loadChildren: './pages/supervisor-geotasks/supervisor-geotasks.module#SupervisorGeotasksPageModule' },
+  { path: 'operario-geotasks/:id', loadChildren: './pages/operario-geotasks/operario-geotasks.module#OperarioGeotasksPageModule' },
+/*   { path: 'popover', loadChildren: './pages/popover/popover.module#PopoverPageModule' }, */
+
 
 ];
 

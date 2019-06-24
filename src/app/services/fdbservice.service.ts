@@ -115,4 +115,13 @@ traerTareas(){
   .catch(err=>console.log(err));
 }
 
+async presentToast(texto: string) {
+  const toast = await this.toastController.create({
+    message: texto,
+    duration: 5000,
+    cssClass: 'background-color:red'
+  });
+  toast.present();
+}
+
 }
