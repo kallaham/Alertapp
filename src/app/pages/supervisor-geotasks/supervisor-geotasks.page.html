@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Geo Tareas Supervisor</ion-title>
+    </ion-toolbar>
+    <ion-item>
+        <ion-label>Opciones</ion-label>
+        <!--<ion-select [(ngModel)]="operarioSeleccionado" id="selectOperario" interface="action-sheet" placeholder="Seleccionar">
+            <ion-select-option [value]="operario" *ngFor="let operario of dbFireStore.operariosDisponibles">{{operario.nombre}}</ion-select-option>
+        </ion-select>-->
+        <ion-select interface="action-sheet" placeholder="Seleccione" text-center>
+            <ion-select-option>Seguimientos</ion-select-option>
+            <ion-select-option>Ubicaciones</ion-select-option>
+            <ion-select-option>Alertas</ion-select-option>
+        </ion-select>
+        <ion-buttons slot="end">
+            <ion-button>Aceptar</ion-button>
+        </ion-buttons>
+    </ion-item>
+</ion-header>
+
+<ion-content>
+    <div id='map' class="mapa"></div>
+</ion-content>

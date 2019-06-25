@@ -13,7 +13,11 @@ export class FDBServiceService implements OnInit {
 
   operariosDisponibles: any [] = [];
   ubicaciones:any[]=[];
-  public db :firebase.app.App;
+ // ubicacionesEnserio:any[]=[]
+  objeto:any={}
+  nombrelugar:string='';
+  geopoint:any;
+  tareas:any[]=[];
   //db:any=firebase.firestore;
 
   // Your web app's Firebase configuration
@@ -31,8 +35,9 @@ export class FDBServiceService implements OnInit {
   constructor(public router: Router, public toastController: ToastController) {
     this.inicializarBaseDatos();
     // console.log("todo bien")
-    this.traerListaOperarios();
- this.traerUbicaciones()
+      this.traerListaOperarios();
+      this.traerUbicaciones()
+    this.traerTareas()
   }
 
    ngOnInit() {
@@ -40,19 +45,32 @@ export class FDBServiceService implements OnInit {
    }
 
   inicializarBaseDatos(){
-    this.db = firebase.initializeApp(this.firebaseConfig);
+
+    firebase.initializeApp(this.firebaseConfig);
+    /*  const settings ={timestampsInSnapshots:true}
+     firebase.firestore().settings(settings); */
   }
   
   public getFireStore(){
+    
     return firebase.firestore();
   }
 
-  public getBaseDatos(){
-    return this.db;
-  }
+ public getFireBase(){
+    return firebase;
+  } 
 
   traerListaOperarios(){
-  firebase.firestore().collection("operarios").get()
+
+    firebase.firestore().collection("operarios").onSnapshot(query=>{
+       query.forEach(operario=>{
+        if(operario.data().disponible){
+          this.operariosDisponibles.push(operario.data());
+         }
+       });
+       console.log(this.operariosDisponibles)
+    });
+ /*  firebase.firestore().collection("operarios").get()
      .then(snapshot=>{
        snapshot.forEach(dato=>{
          console.log(dato);
@@ -60,18 +78,50 @@ export class FDBServiceService implements OnInit {
           this.operariosDisponibles.push(dato.data());
          }
       });
-       console.log(this.operariosDisponibles);
+      //console.log(this.operariosDisponibles);
      })
-     .catch(err=>console.log(err))
+     .catch(err=>console.log(err)) */
   }
 
 traerUbicaciones(){
   firebase.firestore().collection("lugares").get()
   .then(snapshot=>{
-     snapshot.forEach(lugar=>this.ubicaciones.push(lugar.data()));
-     console.log(this.ubicaciones)
+     //snapshot.forEach(lugar=>this.ubicaciones.push(lugar.data()));
+       snapshot.forEach(dato=>{this.ubicaciones.push(dato.data())
+      })
+    
+      // console.log(Object.keys(this.ubicaciones[0]))
+      // console.log(Object.values(this.ubicaciones[0]))
+     /*   Object.keys(this.ubicaciones[0]).forEach(name=>{
+         this.objeto={nombre:name}
+          this.ubicacionesEnserio.push(this.objeto)
+       }) */
+      
+      /* for(let l in Object.values(this.ubicaciones[0])){
+        this.ubicacionesEnserio[l].ubicacion=Object.values(this.ubicaciones[0])[l] */
+    /*   } */
+      //console.log(this.ubicaionesEnserio)
+
   })
   .catch(err=>console.log(err));
+}
+
+traerTareas(){
+  firebase.firestore().collection("tareas").get()
+  .then(snapshot=>{
+    snapshot.forEach(tarea=>this.tareas.push(tarea.data()));
+    console.log(this.tareas)
+  })
+  .catch(err=>console.log(err));
+}
+
+async presentToast(texto: string) {
+  const toast = await this.toastController.create({
+    message: texto,
+    duration: 5000,
+    cssClass: 'background-color:red'
+  });
+  toast.present();
 }
 
 }

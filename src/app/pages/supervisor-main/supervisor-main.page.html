@@ -7,12 +7,25 @@
 <ion-content>
 
 
-    <ion-button expand="block" fill="outline">Disponibles</ion-button>
+    <ion-button expand="block" fill="outline" (click)="irATareas()">Hacer asignación</ion-button>
 
-    <ion-button expand="block" fill="outline">Ocupados</ion-button>
+    <ion-button expand="block" fill="outline" (click)="muestraAsignaciones()">Tareas asignadas</ion-button>
 
 
     <ion-button color="medium" expand="block">Cerrar Sesión</ion-button>
 
 
+  <ng-container *ngIf="mostrarAsignaciones">
+     <ul  *ngFor="let asignacion of asignaciones">
+       <li>
+         <ion-label style="display: block">ID asignación: {{asignacion.id}}</ion-label>
+          <ion-button (click)="verDetalle($event,asignacion)">Ver Detalle</ion-button>
+          <a [routerLink]="['/supervisor-geotasks/',asignacion.id]">
+          <ion-button>Ir a asignación</ion-button>
+        </a>
+        <hr>
+       </li>
+     </ul>
+  </ng-container>
+ 
 </ion-content>
