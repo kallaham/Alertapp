@@ -8,17 +8,24 @@
 
 ion-content {
     --background: black !important;
+    --border: none;
+    --text-decoration: none;
 }
 
 .cuerpo{
-    $background-color: green;
-    margin-top: 150px;
+    margin-top: 110px;
+    text-align: center;
+    border: none;
+    text-decoration: none;
 }
 
 ion-button{
     --color: black;
     --background: yellow;
     font-weight: bold;
+    margin-top: 50px;
+    margin-left: 75px;
+    margin-right: 70px;
 }
 
 ion-label{
@@ -31,4 +38,25 @@ ion-input{
 
 ion-item{
     --background: black;
+    --border: none;
+    --text-decoration: none;
+
 }
+
+.login{
+    color: yellow !important;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Arial Narrow';
+}
+
+ion-icon{
+    color: yellow;
+    font-size: 50px;
+}
+
+ion-card{
+    width: 90%;
+    text-align: center;
+}
+
