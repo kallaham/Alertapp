@@ -1,5 +1,5 @@
 .titulo{
-    background-color: yellow;
+    background-color: yellow  ;
     font-family: 'Belgrado';
     font-size: 35px;
     text-align: center;
@@ -44,5 +44,28 @@ ion-col{
 }
 
 ion-footer{
-    background: yellow !important;
+    background: black !important;
+    
+}
+
+ion-icon{
+    color: yellow;
+    font-size: 50px;
+}
+
+.bt1{
+    --background:#229954;
+    width: 95%;
+    --color: white;
+
+}
+
+.bt2{
+    --background:#2980B9;
+    width: 95%;
+    --color: white;
+}
+
+.linea{
+   background: yellow; 
 }

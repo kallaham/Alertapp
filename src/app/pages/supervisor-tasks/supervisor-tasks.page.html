@@ -1,39 +1,38 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Tareas Supervisor</ion-title>
+        <ion-title class="titulo">TAREAS</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-item>
-        <ion-label>Trabajadores Disponibles</ion-label>
-        <ion-select [(ngModel)]="operarioSeleccionado" id="selectOperario" interface="action-sheet" placeholder="Seleccionar" >
-                    <ion-select-option [value]="operario" *ngFor="let operario of dbFireStore.operariosDisponibles">{{operario.nombre}}</ion-select-option>
+    <ion-item class="cuadro">
+        <ion-label >Trabajadores Disponibles</ion-label>
+        <ion-select  [(ngModel)]="operarioSeleccionado" id="selectOperario" interface="action-sheet" placeholder="Seleccionar" >
+                    <ion-select-option  [value]="operario" *ngFor="let operario of dbFireStore.operariosDisponibles">{{operario.nombre}}</ion-select-option>
             </ion-select>
     </ion-item>
 
-    <ion-item>
-        <ion-label>Asignar Tarea</ion-label>
-        <ion-select [(ngModel)]="tareaSeleccionada" id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
-            <ion-select-option [value]="tarea"  *ngFor="let tarea of dbFireStore.tareas">{{tarea.tarea}}</ion-select-option>
+    <ion-item class="cuadro">
+        <ion-label >Asignar Tarea</ion-label>
+        <ion-select  [(ngModel)]="tareaSeleccionada" id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
+            <ion-select-option  [value]="tarea"  *ngFor="let tarea of dbFireStore.tareas">{{tarea.tarea}}</ion-select-option>
         </ion-select>
     </ion-item>
 
-    <ion-item>
-        <ion-label>Selec. Lugar de Trabajo</ion-label>
-        <ion-select [(ngModel)]="lugarSeleccionado" id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
-            <ion-select-option [value]="lugar" *ngFor="let lugar of dbFireStore.ubicaciones">{{lugar.nombre}}</ion-select-option>
+    <ion-item class="cuadro">
+        <ion-label >Selec. Lugar de Trabajo</ion-label>
+        <ion-select  [(ngModel)]="lugarSeleccionado" id="customActionSheetSelect" interface="action-sheet" placeholder="Seleccionar">
+            <ion-select-option  [value]="lugar" *ngFor="let lugar of dbFireStore.ubicaciones">{{lugar.nombre}}</ion-select-option>
         </ion-select>
     </ion-item>
 
-    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    <ion-textarea></ion-textarea>
+
 
     <!-- Textarea in an item with a placeholder -->
-    <ion-item>
-        <ion-textarea [(ngModel)]="descripcion" placeholder="Observaciones generales..."></ion-textarea>
-    </ion-item>
+   
+        <ion-textarea class="cuadro" [(ngModel)]="descripcion" placeholder="Observaciones generales..."></ion-textarea>
+ 
 
     <ion-button shape="round" expand="block" (click)="asignarTarea()">Asignar</ion-button>
     <!--<ion-button shape="round" expand="block">Nueva Tarea</ion-button>-->
