@@ -1,0 +1,32 @@
+.titulo{
+    background-color: yellow;
+    font-family: 'Belgrado';
+    font-size: 30px;
+    text-align: center;
+    color: black;
+}
+
+ion-content {
+    --background: black !important;
+    --border: none;
+    --text-decoration: none;
+}
+
+.cuadro{
+    margin-top: 40px;
+}
+
+ion-button{
+    --color: black;
+    --background: yellow;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-left: 75px;
+    margin-right: 70px;
+}
+
+ion-textarea{
+    --color: yellow;
+    --background: black;
+
+}
