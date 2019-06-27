@@ -17,7 +17,7 @@
 
   <ng-container *ngIf="mostrarAsignaciones">
      <ul  *ngFor="let asignacion of asignaciones">
-       <li>
+       <li  [hidden]="!mostrarAsignaciones" >
          <ion-label style="display: block">ID asignación: {{asignacion.id}}</ion-label>
           <ion-button (click)="verDetalle($event,asignacion)">Ver Detalle</ion-button>
           <a [routerLink]="['/supervisor-geotasks/',asignacion.id]">

@@ -49,7 +49,13 @@ export class SupervisorMainPage implements OnInit {
   }
 
   muestraAsignaciones(){
-    this.mostrarAsignaciones=true;
+    if(this.mostrarAsignaciones){
+    this.mostrarAsignaciones=false;
+    }
+    else{
+      this.mostrarAsignaciones=true;
+    }
+    
   }
 
   asig(){
