@@ -17,6 +17,7 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     <!--
@@ -24,6 +25,8 @@
       More info here: https://github.com/apache/cordova-plugin-splashscreen
     -->
 >>>>>>> a988f79725584b4330d6e1027d5e5b6662e929e1
+=======
+>>>>>>> c5d0c03e765b5b5b1a734bf0e14c2a674ea3c54a
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
