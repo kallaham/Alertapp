@@ -3,20 +3,19 @@
         <ion-title class="titulo">Geo Tareas</ion-title>
     </ion-toolbar>
     <ion-item>
-       <!--  <ion-label></ion-label> -->
-      
+        <!--  <ion-label></ion-label> -->
+
         <!--<ion-select [(ngModel)]="operarioSeleccionado" id="selectOperario" interface="action-sheet" placeholder="Seleccionar">
             <ion-select-option [value]="operario" *ngFor="let operario of dbFireStore.operariosDisponibles">{{operario.nombre}}</ion-select-option>
         </ion-select>-->
-       <ion-select interface="action-sheet" placeholder="Detalles Asignación" text-center>
+        <ion-select interface="action-sheet" placeholder="Detalles Asignación" text-center>
             <ion-select-option>{{nombreOperario}}</ion-select-option>
             <ion-select-option>Ubicaciones</ion-select-option>
             <ion-select-option>Alertas</ion-select-option>
         </ion-select>
         <ion-buttons slot="start">
-            <ion-button>Volver</ion-button>
-            <ion-button>
-                <a [routerLink]="['/chat/',idOperario,nombreOperario]">CHAT</a> </ion-button>
+            <!--<ion-button>Volver</ion-button>-->
+            <a [routerLink]="['/chat/',idOperario,nombreOperario]">CHAT</a>
         </ion-buttons>
     </ion-item>
 </ion-header>

@@ -1,13 +1,17 @@
 .titulo {
     background-color: yellow;
     font-family: 'Belgrado';
-    font-size: 35px;
+    font-size: 28px;
     text-align: center;
     color: black;
 }
 
 ion-label {
     --color: yellow;
+}
+
+ion-footer {
+    background: black !important;
 }
 
 .asignacion {

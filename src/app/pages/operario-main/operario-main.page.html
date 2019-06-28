@@ -1,20 +1,21 @@
-<ion-header>
+<!--<ion-header>
     <ion-toolbar>
-        <ion-title class="titulo">Operario {{asignacion.nombre_operario}}</ion-title>
+        <ion-title class="titulo">Asignaciones {{asignacion.nombre_operario}}</ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content>
     <ion-header>
         <ion-toolbar>
-            <ion-segment [(ngModel)]="ventana">
+            <h2 class="titulo"> Asignaciones {{asignacion.nombre_operario}}</h2>
+            <!--<ion-segment [(ngModel)]="ventana">
                 <ion-segment-button value="asignaciones">
                     Asignaciones
                 </ion-segment-button>
-                <!--    <ion-segment-button value="alertas">
+                    <ion-segment-button value="alertas">
                                     Alertas
-                                </ion-segment-button> -->
-            </ion-segment>
+                                </ion-segment-button> 
+            </ion-segment>-->
         </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -81,3 +82,7 @@
     </ion-content>
 
 </ion-content>
+
+<ion-footer>
+    <ion-button class="btn2" expand="block" (click)="cerrarSesion()">Cerrar Sesión</ion-button>
+</ion-footer>
