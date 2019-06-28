@@ -91,7 +91,7 @@ export class ChatPage implements OnInit  {
       snapshot.forEach(mensaje=>{
         //mensaje.data().fecha = new Date(mensaje.data().fecha);
         this.mensajes.push(mensaje.data());
-        console.log(this.mensajes[0].autor);
+        //console.log(this.mensajes[0].autor);
       });
       
     });

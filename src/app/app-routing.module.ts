@@ -10,8 +10,9 @@ const routes: Routes = [
   { path: 'supervisor-tasks', loadChildren: './pages/supervisor-tasks/supervisor-tasks.module#SupervisorTasksPageModule' },
   { path: 'supervisor-geotasks/:id', loadChildren: './pages/supervisor-geotasks/supervisor-geotasks.module#SupervisorGeotasksPageModule' },
   { path: 'operario-geotasks/:id', loadChildren: './pages/operario-geotasks/operario-geotasks.module#OperarioGeotasksPageModule' },
-  { path: 'chat/:ido/:nombre', loadChildren: './pages/chat/chat.module#ChatPageModule' },  { path: 'chat-operador', loadChildren: './pages/chat-operador/chat-operador.module#ChatOperadorPageModule' },
-  { path: 'operario-chat', loadChildren: './pages/operario-chat/operario-chat.module#OperarioChatPageModule' },
+  { path: 'chat/:ido/:nombre', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+ /*  { path: 'chat-operador', loadChildren: './pages/chat-operador/chat-operador.module#ChatOperadorPageModule' }, */
+  { path: 'operario-chat/:ids/:nombre', loadChildren: './pages/operario-chat/operario-chat.module#OperarioChatPageModule' },
 
 
 /*   { path: 'popover', loadChildren: './pages/popover/popover.module#PopoverPageModule' }, */
