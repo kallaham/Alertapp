@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738349578431",
+    "firebase_url": "https://pruebafirestore-67d01.firebaseio.com",
+    "project_id": "pruebafirestore-67d01",
+    "storage_bucket": "pruebafirestore-67d01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738349578431:android:2a1a994616e959f0",
+        "android_client_info": {
+          "package_name": "io.fcm.alertapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738349578431-banhmodl3t5vps7hu9ss2af1ghuvv6vg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi-bO048oVMFKM9MCeCVfvN2bE3NLFoq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738349578431-banhmodl3t5vps7hu9ss2af1ghuvv6vg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -58,6 +58,20 @@ export class SupervisorMainPage implements OnInit {
     
   }
 
+  cerrarSesion(){
+    console.log(this.fireDB.getFireBase().auth().currentUser);
+    this.fireDB.getFireBase().auth().signOut()
+    .then(respuesta=>{
+
+      console.log(respuesta);
+      this.router.navigate(['/login']);
+    })
+    .catch(err=>console.log(err))
+    .finally(()=>{
+      console.log(this.fireDB.getFireBase().auth().currentUser);
+    });
+  }
+
   asig(){
 console.log(this.asigna)
   }

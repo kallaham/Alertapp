@@ -16,6 +16,8 @@ export class OperarioGeotasksPage implements OnInit {
   longitud = 0;
   latitud = 0;
   idAsignacion = '';
+  idS='TMzL19sb37Vhaw7Ul85ZCVnzG4M2';
+  nombreSupervisor="Juan Supervisor";
 
   constructor(private rutaActivada: ActivatedRoute, private db: FDBServiceService ) {
     this.idAsignacion=this.rutaActivada.snapshot.paramMap.get('id');

@@ -18,6 +18,8 @@ export class SupervisorGeotasksPage implements OnInit {
   idAsignacion = '';
   latitud: number;
   longitud: number;
+  nombreOperario: string;
+  idOperario: string;
 
   constructor(public menu: MenuController
     , private rutaActivada: ActivatedRoute, public fdFirebase: FDBServiceService) {
@@ -81,6 +83,8 @@ export class SupervisorGeotasksPage implements OnInit {
         // console.log(snapshot.data());
         this.latitud = snapshot.data().geo_punto.latitude;
         this.longitud = snapshot.data().geo_punto.longitude;
+        this.nombreOperario= snapshot.data().nombre_operario;
+        this.idOperario= snapshot.data().uid_operario;
         // console.log(this.latitud,this.longitud)
       })
       .catch(err => console.log(err));

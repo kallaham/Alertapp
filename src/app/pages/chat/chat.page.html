@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+
+
+
+    <ion-item>
+        <ion-label position="floating" >Tu nombre: </ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+  </ion-header>
+  
+  <!-- <ng-container *ngIf=""> -->
+     <ion-content class="fondo"> 
+      <ion-card *ngFor="let mensaje of mensajes" [ngSwitch]="mensaje.autor"> 
+       <ion-card-header >
+         <ion-card-title *ngSwitchCase="autorActual">Yo:</ion-card-title>
+         <ion-card-title *ngSwitchDefault>{{mensaje.autor}}</ion-card-title>
+       </ion-card-header>
+       <ion-card-content>
+      <!--    {{autorActual}} -->
+         {{mensaje.mensaje}}   {{mensaje.fecha | date:'h:mm:ss a'}} -->
+       </ion-card-content>
+      </ion-card>
+    </ion-content> 
+  
+  
+  
+  
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-item>
+        
+          <ion-input [(ngModel)]="mensaje" type="text" placeholder="Escribe tu mensaje"></ion-input>
+          <ion-button (click)="escribeMensaje()" >
+            <ion-icon slot="icon-only" name="send"></ion-icon>
+           
+          </ion-button>
+      </ion-item>
+     
+    </ion-toolbar>
+    <ion-button>Cerrar Sesión</ion-button>
+  </ion-footer>
+  
+
+

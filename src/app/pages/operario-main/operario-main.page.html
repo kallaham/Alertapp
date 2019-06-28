@@ -1,6 +1,8 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Operario</ion-title>
+        <ion-title>Operario 
+        </ion-title>
+      
     </ion-toolbar>
 </ion-header>
 
@@ -19,21 +21,16 @@
               </ion-header>
               <ion-content [ngSwitch]="ventana">
                     <div *ngSwitchCase="'asignaciones'">
-                            
-                         <!--    <ng-container *ngIf="mostrarAsignaciones">
-                                    <ul  *ngFor="let asignacion of asignaciones"> -->
-                                    <ul>
+                                    <ul *ngIf="tieneAsignacion">
                                         <li>
                                         <ion-label style="display: block">ID asignación: {{asignacion.id}}</ion-label>
-                                         <ion-button (click)="verDetalle($event,asignacion)">Ver Detalle</ion-button>
+                                         <ion-button [disabled]="!tieneAsignacion" (click)="verDetalle($event,asignacion)">Ver Detalle</ion-button>
                                         <a [routerLink]="['/operario-geotasks/',asignacion.id]">
-                                         <ion-button>Ir a asignación</ion-button>
+                                         <ion-button [disabled]="!tieneAsignacion">Ir a asignación</ion-button>
                                        </a>
                                        <hr>
                                       </li>
                                     </ul>
-                                   <!--  </ul>
-                                 </ng-container> -->
                     </div>
 
                         <div *ngSwitchCase="'alertas'">

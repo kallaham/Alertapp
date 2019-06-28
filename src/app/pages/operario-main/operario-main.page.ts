@@ -14,16 +14,17 @@ export class OperarioMainPage implements OnInit {
 /*   asignacion: any; */
   asignacion: any;
   ventana = 'asignaciones';
-  tieneAsignacion = false;
+  tieneAsignacion: boolean;
+
 
   constructor(private bdService: FDBServiceService, private toastController: ToastController) {
     this.operarioActual = this.bdService.getFireBase().auth().currentUser.uid;
-    console.log(this.operarioActual)
+   // console.log(this.operarioActual)
     this.operarioTieneAsignacion();
   }
 // captura el operario actual y pregunta si tiene asignaciones vigentes
   ngOnInit() {
-  
+    //this.tieneAsignacion = false;
   }
 
   // determina si el operario que inicio sesión tiene o no una asignación
@@ -36,7 +37,6 @@ export class OperarioMainPage implements OnInit {
         if (infoAsignacion.uid_operario === this.operarioActual) {
           this.tieneAsignacion = true;
           this.asignacion = infoAsignacion;
-          console.log(this.asignacion)
         }
       });
 
@@ -44,6 +44,7 @@ export class OperarioMainPage implements OnInit {
         this.bdService.presentToast(`tienes una asignación`);
       } else {
         this.bdService.presentToast(`No tienes asignaciones`);
+        this.asignacion = false;
       }
 
     })
