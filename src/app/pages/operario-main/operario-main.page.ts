@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {FDBServiceService} from '../../services/fdbservice.service';
 import {ToastController} from '@ionic/angular';
+import { toDate } from '@angular/common/src/i18n/format_date';
 
 @Component({
   selector: 'app-operario-main',
@@ -15,6 +16,7 @@ export class OperarioMainPage implements OnInit {
   asignacion: any;
   ventana = 'asignaciones';
   tieneAsignacion: boolean;
+  verDetalleHabilitado: boolean ;
 
 
   constructor(private bdService: FDBServiceService, private toastController: ToastController) {
@@ -25,6 +27,8 @@ export class OperarioMainPage implements OnInit {
 // captura el operario actual y pregunta si tiene asignaciones vigentes
   ngOnInit() {
     //this.tieneAsignacion = false;
+    this.verDetalleHabilitado = false;
+    
   }
 
   // determina si el operario que inicio sesión tiene o no una asignación
@@ -37,9 +41,11 @@ export class OperarioMainPage implements OnInit {
         if (infoAsignacion.uid_operario === this.operarioActual) {
           this.tieneAsignacion = true;
           this.asignacion = infoAsignacion;
+          this.asignacion.hora_asignacion = new Date(this.asignacion.hora_asignacion.seconds*1000);
         }
       });
-
+    
+      console.log(this.asignacion.hora_asignacion);
       if(this.tieneAsignacion){
         this.bdService.presentToast(`tienes una asignación`);
       } else {
@@ -49,5 +55,14 @@ export class OperarioMainPage implements OnInit {
 
     })
     .catch(err => console.log(err));
+  }
+
+  verDetalle() {
+    if(!this.verDetalleHabilitado) {
+      this.verDetalleHabilitado = true;
+      console.log(this.asignacion);
+    } else {
+      this.verDetalleHabilitado = false;
+    }
   }
 }

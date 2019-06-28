@@ -11,6 +11,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class FDBServiceService implements OnInit {
 
+  static numeroMensaje = 0;
   operariosDisponibles: any [] = [];
   ubicaciones:any[]=[];
  // ubicacionesEnserio:any[]=[]

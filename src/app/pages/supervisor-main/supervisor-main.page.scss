@@ -1,5 +1,5 @@
-.titulo{
-    background-color: yellow  ;
+.titulo {
+    background-color: yellow;
     font-family: 'Belgrado';
     font-size: 35px;
     text-align: center;
@@ -12,60 +12,58 @@ ion-content {
     --text-decoration: none;
 }
 
-ion-button{
+ion-button {
     --color: black;
     --background: yellow;
     font-weight: bold;
     margin-top: 20px;
 }
 
-ion-label{
+ion-label {
     --color: yellow;
 }
 
-.asignacion{
+.asignacion {
     color: white;
 }
 
-.btn1{
+.btn1 {
     margin-left: 50px;
     margin-right: 50px;
 }
 
-.btn2{
+.btn2 {
     margin-left: 70px;
     margin-right: 70px;
     --color: white;
-    --background:#6C0000;
+    --background: #6C0000;
 }
 
-ion-col{
+ion-col {
     --text-align: center;
 }
 
-ion-footer{
+ion-footer {
     background: black !important;
-    
 }
 
-ion-icon{
+ion-icon {
     color: yellow;
     font-size: 50px;
 }
 
-.bt1{
-    --background:#229954;
-    width: 95%;
-    --color: white;
-
-}
-
-.bt2{
-    --background:#2980B9;
+.bt1 {
+    --background: #229954;
     width: 95%;
     --color: white;
 }
 
-.linea{
-   background: yellow; 
+.bt2 {
+    --background: #2980B9;
+    width: 95%;
+    --color: white;
+}
+
+.linea {
+    background: yellow;
 }

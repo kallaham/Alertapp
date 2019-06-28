@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FDBServiceService} from '../../services/fdbservice.service';
 import { ActivatedRoute } from '@angular/router';
+import { CHECKBOX_VALUE_ACCESSOR } from '@angular/forms/src/directives/checkbox_value_accessor';
 
 @Component({
   selector: 'app-chat',
@@ -8,6 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit  {
+ /*  static numero: number;
+
+  public static getNumer(){
+    let num = ChatPage.numero++;
+    return num;
+  } */
 
   mensaje: string;
   uidMensaje: string;
@@ -16,7 +23,8 @@ export class ChatPage implements OnInit  {
   nombreSupervisor:string;
   nombreDestinatario:string;
   mensajes:any[]=[];
-  autorActual:string;
+  autorActual:string ='Juan Supervisor';
+  
 
   constructor(private db: FDBServiceService,
     private activatedRoute :ActivatedRoute) { 
@@ -26,12 +34,15 @@ export class ChatPage implements OnInit  {
       console.log(this.nombreDestinatario); */
       this.uidSupervisor=this.db.getFireBase().auth().currentUser.uid;
       this.funcionDectaUsuario();
+    
     }
 
  ngOnInit(): void {
    this.detectarCambios();
    //this.db.getFireBase().database().ref(`chats/${ this.uidDocumento}/mensajes`).remove();
   }
+
+ 
 
     funcionDectaUsuario(){
       if(this.uidSupervisor=='TMzL19sb37Vhaw7Ul85ZCVnzG4M2'){
@@ -60,6 +71,7 @@ export class ChatPage implements OnInit  {
     } else {
      // const fecha: Date = new Date();
       this.db.getFireStore().collection("chats").doc(this.uidMensaje).collection("mensajes")
+  /*     .doc(`${ChatPage.numero++}`) */
       .add({
         autor: this.nombreSupervisor,
         mensaje: this.mensaje,
@@ -89,22 +101,14 @@ export class ChatPage implements OnInit  {
     .onSnapshot(snapshot=>{
       this.mensajes=[];
       snapshot.forEach(mensaje=>{
-        //mensaje.data().fecha = new Date(mensaje.data().fecha);
         this.mensajes.push(mensaje.data());
-        //console.log(this.mensajes[0].autor);
       });
-      
+      this.mensajes = this.organizarMensajesPorFecha(this.mensajes);
     });
   }
 
-/*   detectarCambiosf() {
-    firebase.database().ref('mensajes').on('value', snap => {
-      this.mensajes = [];
-      snap.forEach(element => {
-        this.mensajes.push(element.val());
-      });
-      console.log(this.mensajes);
-    });
-   } */
+  organizarMensajesPorFecha(mensajes: any[]){
+   return mensajes.sort((m1,m2)=>m1.fecha-m2.fecha);
+  }
 
 }

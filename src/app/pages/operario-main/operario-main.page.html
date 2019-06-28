@@ -1,41 +1,83 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Operario 
-        </ion-title>
-      
+        <ion-title class="titulo">Operario {{asignacion.nombre_operario}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-        <ion-header>
-                <ion-toolbar>
-                        <ion-segment [(ngModel)]="ventana">
-                                <ion-segment-button value="asignaciones">
-                                    Asignaciones
-                                </ion-segment-button>
-                             <!--    <ion-segment-button value="alertas">
+    <ion-header>
+        <ion-toolbar>
+            <ion-segment [(ngModel)]="ventana">
+                <ion-segment-button value="asignaciones">
+                    Asignaciones
+                </ion-segment-button>
+                <!--    <ion-segment-button value="alertas">
                                     Alertas
                                 </ion-segment-button> -->
-                              </ion-segment>
-                </ion-toolbar>
-              </ion-header>
-              <ion-content [ngSwitch]="ventana">
-                    <div *ngSwitchCase="'asignaciones'">
-                                    <ul *ngIf="tieneAsignacion">
-                                        <li>
-                                        <ion-label style="display: block">ID asignación: {{asignacion.id}}</ion-label>
-                                         <ion-button [disabled]="!tieneAsignacion" (click)="verDetalle($event,asignacion)">Ver Detalle</ion-button>
-                                        <a [routerLink]="['/operario-geotasks/',asignacion.id]">
-                                         <ion-button [disabled]="!tieneAsignacion">Ir a asignación</ion-button>
-                                       </a>
-                                       <hr>
-                                      </li>
-                                    </ul>
-                    </div>
+            </ion-segment>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <!--   <div *ngSwitchCase="'asignaciones'"> -->
+        <ul *ngIf="tieneAsignacion">
+            <li>
+                <ion-label style="display: block">ID asignación: {{asignacion.id}}</ion-label>
+                <ion-button [disabled]="!tieneAsignacion" (click)="verDetalle()">Ver Detalle</ion-button>
+                <a [routerLink]="['/operario-geotasks/',asignacion.id]">
+                    <ion-button [disabled]="!tieneAsignacion">Ir a asignación</ion-button>
+                </a>
+                <hr>
+            </li>
+        </ul>
 
-                        <div *ngSwitchCase="'alertas'">
-                                alerta
-                        </div>
-              </ion-content>
+
+        <ion-content *ngIf="verDetalleHabilitado">
+            <ion-list>
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>ID Asignación</p>
+                        <h2>{{asignacion.id}}</h2>
+                    </ion-label>
+                </ion-item>
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>Supervisor</p>
+                        <h2>Juan Diaz</h2>
+                    </ion-label>
+                </ion-item>
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>Lugar</p>
+                        <h2>{{asignacion.lugar}}</h2>
+                    </ion-label>
+                </ion-item>
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>Tarea</p>
+                        <h2>{{asignacion.tarea}}</h2>
+                    </ion-label>
+                </ion-item>
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>Fecha Asignación</p>
+                        <h2>{{asignacion.hora_asignacion | date }}</h2>
+                    </ion-label>
+                </ion-item>
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>Hora Asignación</p>
+                        <h2>{{asignacion.hora_asignacion | date:'h:mm:ss a'}}</h2>
+                    </ion-label>
+                </ion-item>
+
+                <ion-item class="cuadro">
+                    <ion-label>
+                        <p>Descripción Tarea</p>
+                        <h2>{{asignacion.descripcion_tarea}}</h2>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-content>
 
 </ion-content>

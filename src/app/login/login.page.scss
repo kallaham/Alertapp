@@ -1,4 +1,4 @@
-.titulo{
+.titulo {
     background-color: yellow;
     font-family: 'Belgrado';
     font-size: 35px;
@@ -12,14 +12,14 @@ ion-content {
     --text-decoration: none;
 }
 
-.cuerpo{
+.cuerpo {
     margin-top: 110px;
     text-align: center;
     border: none;
     text-decoration: none;
 }
 
-ion-button{
+ion-button {
     --color: black;
     --background: yellow;
     font-weight: bold;
@@ -28,35 +28,33 @@ ion-button{
     margin-right: 70px;
 }
 
-ion-label{
-   --color: yellow !important;
+ion-label {
+    --color: yellow !important;
 }
 
-ion-input{
+ion-input {
     --color: yellow !important;
- }
+}
 
-ion-item{
+ion-item {
     --background: black;
     --border: none;
     --text-decoration: none;
-
 }
 
-.login{
+.login {
     color: yellow !important;
     font-size: 30px;
     text-align: center;
     font-family: 'Arial Narrow';
 }
 
-ion-icon{
+ion-icon {
     color: yellow;
     font-size: 50px;
 }
 
-ion-card{
+ion-card {
     width: 90%;
     text-align: center;
 }
-
